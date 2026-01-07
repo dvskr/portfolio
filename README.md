@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio - Sathish Kumar (dvskr)
+
+A modern, premium portfolio website built with Next.js 14, featuring smooth animations and a hybrid design.
+
+## Tech Stack
+
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion, GSAP + ScrollTrigger
+- **Smooth Scroll**: Lenis
+- **Icons**: React Icons, Lucide
+
+## Features
+
+- 🎨 Modern dark theme with cyan accents
+- ⚡ Smooth scrolling with Lenis
+- 🎭 GSAP-powered scroll animations
+- 📱 Fully responsive design
+- 🖱️ Custom cursor effects
+- 🔄 Animated tech stack marquee
+- 📊 Interactive experience tabs
+- 🌙 Clean, professional sections
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Sections
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Hero with animated typing effect
+2. About Me with stats
+3. Experience (tabbed interface)
+4. Technical Skills (animated marquee)
+5. Data Engineering Projects
+6. Products/SaaS showcase
+7. Contact
 
-## Learn More
+## Links
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [LinkedIn](https://linkedin.com/in/dvskr)
+- [GitHub](https://github.com/dvskr)
+- [Twitter/X](https://twitter.com/Sathish_Daggula)
+- [Product Hunt](https://www.producthunt.com/@sathish_1729)
+- [Indie Hackers](https://www.indiehackers.com/Sathish_Daggula)
