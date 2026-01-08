@@ -54,30 +54,29 @@ export default function About() {
         <section
             ref={sectionRef}
             id="about"
-            className="max-w-[1000px] mx-auto px-6 py-16 md:py-20"
+            className="max-w-[1000px] mx-auto px-6 py-12 md:py-16"
         >
-            <div className="flex items-center gap-4 mb-12 about-content">
+            <div className="flex items-center gap-4 mb-8 about-content">
                 <h2 className="text-2xl md:text-3xl font-bold font-mono text-white-off">
                     <span className="text-cyan mr-2">01.</span> About Me
                 </h2>
                 <div className="h-[1px] bg-navy-lighter flex-grow max-w-[300px]"></div>
             </div>
 
-            <div className="grid md:grid-cols-[3fr_2fr] gap-12">
+            <div className="grid md:grid-cols-[3fr_2fr] gap-8">
                 {/* Text Content */}
                 <div className="space-y-6 text-slate text-lg leading-relaxed about-content">
                     <p>
-                        I&apos;m a Data Engineer who knows Python and SQL, but I&apos;d never built a job board,
-                        mobile app, or SaaS before. <span className="text-cyan">AI tools changed that.</span>
+                        I&apos;m a Data Engineer by trade—Python, SQL, and large-scale data systems are my bread and butter.
+                        Full-stack development was familiar territory, but shipping complete products always felt like a side quest.
+                        <span className="text-cyan"> AI tools changed the economics.</span>
                     </p>
                     <p>
-                        Now I ship products in domains I&apos;ve never worked in before using
-                        Cursor + Claude. I bridge the gap between heavy backend data systems and
-                        interactive user experiences.
+                        Now I build and launch SaaS products in domains I&apos;m passionate about.
+                        I bridge the gap between heavy backend data systems and interactive user experiences.
                     </p>
                     <p>
-                        Currently, I build pipelines handling <span className="text-cyan">1TB+ daily data</span>
-                        at Propper International and craft AI-powered tools in my free time.
+                        Currently, I build pipelines handling <span className="text-cyan">1TB+ daily data</span> at Propper International and craft AI-powered tools in my free time.
                     </p>
 
                     <h3 className="text-white-off font-mono pt-4 text-sm">Skills & Technologies:</h3>
@@ -124,7 +123,7 @@ export default function About() {
             </div>
 
             {/* Stats Counters */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 pt-10 border-t border-navy-lighter about-content">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12 pt-10 border-t border-navy-lighter about-content">
                 <div className="text-center">
                     <div className="text-4xl md:text-5xl font-bold text-white-off mb-2 font-mono">
                         <span className="stat-number" data-value="4" data-suffix="+">0</span>

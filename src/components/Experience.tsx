@@ -24,10 +24,10 @@ const jobs = [
         role: 'Data Engineer',
         date: 'Jan 2021 - Dec 2022',
         points: [
-            'Managed 1TB+ of daily telemetry data ingestion using Azure Event Hubs and Databricks Delta Lake.',
-            'Developed HIPAA-compliant data masking and encryption standards for patient data analytics.',
-            'Built automated data quality checks (Great Expectations) integrated into CI/CD pipelines.',
-            'Migrated legacy on-prem SQL Server workloads to Azure Synapse Analytics.',
+            'Managed 1TB+ of daily telemetry data ingestion using Azure Event Hubs and Databricks Delta Lake, supporting real-time monitoring and analytics.',
+            'Developed HIPAA-compliant data masking and encryption standards for patient data analytics, ensuring regulatory compliance across all pipelines.',
+            'Built automated data quality checks using Great Expectations, integrated into CI/CD pipelines to catch issues before production deployment.',
+            'Migrated legacy on-prem SQL Server workloads to Azure Synapse Analytics, improving query performance and reducing infrastructure costs.',
         ],
         tech: ['Python', 'Azure', 'Databricks', 'PySpark'],
     },
@@ -62,9 +62,9 @@ export default function Experience() {
         <section
             ref={sectionRef}
             id="experience"
-            className="max-w-[1000px] mx-auto px-6 py-16 md:py-20"
+            className="max-w-[1000px] mx-auto px-6 py-12 md:py-16"
         >
-            <div className="flex items-center gap-4 mb-12">
+            <div className="flex items-center gap-4 mb-8">
                 <h2 className="text-2xl md:text-3xl font-bold font-mono text-white-off">
                     <span className="text-cyan mr-2">02.</span> Where I&apos;ve Worked
                 </h2>

@@ -57,7 +57,7 @@ export default function Navbar() {
         >
             <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
                 <Link href="/" className="text-cyan font-mono text-xl font-bold z-50">
-                    &lt;dvskr /&gt;
+
                 </Link>
 
                 {/* Desktop Nav */}

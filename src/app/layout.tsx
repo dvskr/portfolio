@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
-import CustomCursor from "@/components/CustomCursor";
+
 import Navbar from "@/components/Navbar";
 import PageLoader from "@/components/PageLoader";
 import SocialSidebars from "@/components/SocialSidebars";
@@ -44,7 +44,7 @@ export default function RootLayout({
       >
         <PageLoader>
           <SmoothScroll>
-            <CustomCursor />
+
             <Navbar />
             <SocialSidebars />
             <main>{children}</main>

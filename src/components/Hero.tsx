@@ -75,11 +75,11 @@ export default function Hero() {
                     <div className="hero-text flex flex-wrap gap-6">
                         <Magnetic>
                             <a
-                                href="#projects"
+                                href="#products"
                                 className="px-8 py-4 border border-cyan text-cyan rounded hover:bg-cyan-tint transition-all font-mono text-sm data-[cursor=pointer]"
                                 data-cursor="pointer"
                             >
-                                Check out my work
+                                Check my products
                             </a>
                         </Magnetic>
 
