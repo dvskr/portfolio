@@ -83,28 +83,10 @@ export default function PageLoader({ children }: { children: React.ReactNode }) 
                                     />
 
                                     {/* Animated glowing circle that follows the path */}
-                                    <circle r="8" fill="url(#glowGradient)" filter="url(#glow)">
+                                    <circle r="6" fill="url(#glowGradient)" filter="url(#glow)">
                                         <animateMotion
-                                            dur="3s"
+                                            dur="2s"
                                             repeatCount="indefinite"
-                                            path="M 60 100 
-                                                  C 60 70, 40 50, 70 50
-                                                  C 100 50, 100 80, 100 100
-                                                  C 100 120, 100 150, 130 150
-                                                  C 160 150, 140 100, 140 100
-                                                  C 140 100, 160 50, 130 50
-                                                  C 100 50, 100 80, 100 100
-                                                  C 100 120, 100 150, 70 150
-                                                  C 40 150, 60 130, 60 100"
-                                        />
-                                    </circle>
-
-                                    {/* Second smaller trailing glow */}
-                                    <circle r="4" fill="#64ffda" opacity="0.6" filter="url(#glow)">
-                                        <animateMotion
-                                            dur="3s"
-                                            repeatCount="indefinite"
-                                            begin="-0.3s"
                                             path="M 60 100 
                                                   C 60 70, 40 50, 70 50
                                                   C 100 50, 100 80, 100 100
