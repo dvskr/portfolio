@@ -79,8 +79,8 @@ const MarqueeRow = ({ items, direction, speed }: { items: TechItem[], direction:
                     >
                         <tech.Icon
                             size={40}
-                            className="transition-all duration-300"
-                            color={tech.color}
+                            className={`transition-all duration-300 ${tech.color === '#FFFFFF' ? 'text-navy dark:text-white' : ''}`}
+                            style={{ color: tech.color === '#FFFFFF' ? 'currentColor' : tech.color }}
                         />
 
                         {/* Animated glow ring */}

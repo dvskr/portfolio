@@ -12,7 +12,7 @@ export default function CustomCursor() {
     const mouseY = useMotionValue(0);
 
     // Smooth spring for the circle
-    const springConfig = { damping: 20, stiffness: 150, mass: 0.5 };
+    const springConfig = { damping: 25, stiffness: 400, mass: 0.2 };
     const circleX = useSpring(mouseX, springConfig);
     const circleY = useSpring(mouseY, springConfig);
 

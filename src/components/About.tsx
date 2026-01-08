@@ -112,10 +112,12 @@ export default function About() {
 
                         {/* Image Container */}
                         <div className="relative rounded overflow-hidden bg-cyan/20 aspect-square transition-all duration-300 grayscale hover:grayscale-0 group-hover:scale-[1.02]">
-                            {/* Fallback pattern until user provides photo */}
-                            <div className="absolute inset-0 bg-navy-light flex items-center justify-center text-cyan text-4xl font-bold font-mono">
-                                SK
-                            </div>
+                            <Image
+                                src="/profile.png"
+                                alt="Sathish Kumar"
+                                fill
+                                className="object-cover"
+                            />
                         </div>
                     </div>
                 </div>
