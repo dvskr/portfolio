@@ -1,0 +1,48 @@
+﻿
+> portfolio@0.1.0 build
+> next build
+
+node.exe : ΓÜá Warning: Next.js inferred your 
+workspace root, but it may not be correct.
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (ΓÜá War 
+   ning: Ne...not be correct.:String) [], RemoteExc  
+  eption
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+ We detected multiple lockfiles and selected the 
+directory of C:\Users\daggu\package-lock.json as the 
+root directory.
+ To silence this warning, set `turbopack.root` in 
+your Next.js config, or consider removing one of the 
+lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/conf
+ig/next-config-js/turbopack#root-directory for more 
+information.
+ Detected additional lockfiles: 
+   * C:\Users\daggu\portfolio\package-lock.json
+
+Γû▓ Next.js 16.1.1 (Turbopack)
+
+  Creating an optimized production build ...
+Γ£ô Compiled successfully in 3.3s
+  Running TypeScript ...
+  Collecting page data using 21 workers ...
+  Generating static pages using 21 workers (0/4) ...
+  Generating static pages using 21 workers (1/4) 
+  Generating static pages using 21 workers (2/4) 
+  Generating static pages using 21 workers (3/4) 
+Γ£ô Generating static pages using 21 workers (4/4) in 1289.9ms
+  Finalizing page optimization ...
+
+Route (app)
+Γöî Γùï /
+Γöö Γùï /_not-found
+
+
+Γùï  (Static)  prerendered as static content
+

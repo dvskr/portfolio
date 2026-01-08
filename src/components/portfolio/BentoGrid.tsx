@@ -33,7 +33,7 @@ const products = {
         emoji: "💪",
         tagline: "AI-powered workout tracking",
         status: "soon",
-        launchDate: "Feb 2026",
+        launchDate: "Coming Soon",
         hook: "Your Notes app <span class='text-emerald-400 bg-emerald-400/10 px-1 rounded'>doesn't know</span> progressive overload.",
         progress: 75,
         progressLabel: "Beta coming soon",
@@ -61,7 +61,7 @@ const variants = {
     visible: (i: number) => ({
         opacity: 1,
         y: 0,
-        transition: { delay: i * 0.1, duration: 0.5, ease: "easeOut" }
+        transition: { delay: i * 0.1, duration: 0.5, ease: "easeOut" as const }
     })
 };
 
@@ -76,28 +76,21 @@ export default function BentoGrid() {
                 {/* 1. PMHNP Hiring (Large) */}
                 <motion.div custom={0} variants={variants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="lg:col-span-7 lg:row-span-2">
                     <Card3D className="h-full" accentColor={products.pmhnp.accentColor}>
-                        <div className="h-full p-8 flex flex-col justify-between">
+                        <div className="h-full p-4 sm:p-8 flex flex-col justify-between">
                             <div>
-                                <div className="flex justify-between items-start mb-6">
+                                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-4 sm:mb-6">
                                     <div className="flex items-center gap-3">
-                                        <span className="text-4xl shadow-sm bg-navy rounded-xl p-2 border border-white/10">{products.pmhnp.emoji}</span>
+                                        <span className="text-3xl sm:text-4xl shadow-sm bg-navy rounded-xl p-2 border border-white/10">{products.pmhnp.emoji}</span>
                                         <div>
-                                            <div className="flex items-center gap-3">
-                                                <h3 className="text-2xl font-bold text-white-off">{products.pmhnp.name}</h3>
-                                                <div className="flex gap-2 text-slate-light">
-                                                    <a href={products.pmhnp.socials.github} target="_blank" rel="noopener noreferrer" className="hover:text-cyan transition-colors"><Github size={16} /></a>
-                                                    <a href={products.pmhnp.socials.twitter} target="_blank" rel="noopener noreferrer" className="hover:text-cyan transition-colors"><XIcon className="w-4 h-4" /></a>
-                                                    <a href={products.pmhnp.socials.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-cyan transition-colors"><Linkedin size={16} /></a>
-                                                </div>
-                                            </div>
+                                            <h3 className="text-xl sm:text-2xl font-bold text-white-off">{products.pmhnp.name}</h3>
                                             <div className="flex items-center gap-2 mt-1">
                                                 <LiveBadge status="live" />
                                                 <span className="text-xs font-bold uppercase tracking-wider text-green-400">Live Product</span>
                                             </div>
                                         </div>
                                     </div>
-                                    {/* Fake User Avatars */}
-                                    <div className="flex -space-x-2">
+                                    {/* Fake User Avatars - Hidden on mobile */}
+                                    <div className="hidden sm:flex -space-x-2">
                                         {['😊', '🙂', '😄', '🤩'].map((emoji, i) => (
                                             <div key={i} className="w-8 h-8 rounded-full bg-navy border-2 border-navy-light flex items-center justify-center text-xs">{emoji}</div>
                                         ))}
@@ -105,16 +98,16 @@ export default function BentoGrid() {
                                     </div>
                                 </div>
 
-                                <p className="text-xl text-slate-light leading-relaxed mb-6" dangerouslySetInnerHTML={{ __html: products.pmhnp.hook }}></p>
+                                <p className="text-lg sm:text-xl text-slate-light leading-relaxed mb-4 sm:mb-6" dangerouslySetInnerHTML={{ __html: products.pmhnp.hook }}></p>
 
-                                <div className="grid grid-cols-2 gap-4 mb-8">
+                                <div className="grid grid-cols-2 gap-2 sm:gap-4 mb-4 sm:mb-8">
                                     {products.pmhnp.features.map(f => (
                                         <span key={f} className="text-sm font-medium text-slate bg-navy px-3 py-1.5 rounded-lg border border-white/5">{f}</span>
                                     ))}
                                 </div>
                             </div>
 
-                            <div className="flex items-end justify-between border-t border-white/5 pt-6">
+                            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 border-t border-white/5 pt-6">
                                 <div className="flex gap-8">
                                     <div>
                                         <p className="text-3xl font-bold text-white-off tracking-tight">{products.pmhnp.stats.jobs}</p>
@@ -125,7 +118,7 @@ export default function BentoGrid() {
                                         <p className="text-xs font-bold text-slate uppercase tracking-wider">Companies</p>
                                     </div>
                                 </div>
-                                <MagneticButton href={products.pmhnp.ctaLink} className="bg-cyan text-navy font-bold hover:bg-cyan-tint">
+                                <MagneticButton href={products.pmhnp.ctaLink} className="bg-cyan text-navy font-bold hover:bg-cyan-tint w-full sm:w-auto justify-center">
                                     {products.pmhnp.cta}
                                 </MagneticButton>
                             </div>
@@ -136,23 +129,18 @@ export default function BentoGrid() {
                 {/* 2. Gym Tracker (Medium) */}
                 <motion.div custom={1} variants={variants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="lg:col-span-5 lg:row-span-2">
                     <Card3D className="h-full" accentColor={products.gym.accentColor}>
-                        <div className="h-full p-8 flex flex-col">
-                            <div className="flex justify-between items-start mb-6">
+                        <div className="h-full p-4 sm:p-8 flex flex-col">
+                            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-4 sm:mb-6">
                                 <div className="flex items-center gap-4">
                                     <span className="text-4xl bg-emerald-500/10 rounded-xl p-2">{products.gym.emoji}</span>
                                     <div>
-                                        <div className="flex items-center gap-3">
-                                            <h3 className="text-2xl font-bold text-white-off">{products.gym.name}</h3>
-                                            <div className="flex gap-2 text-slate-light">
-                                                <a href={products.gym.socials.github} target="_blank" rel="noopener noreferrer" className="hover:text-cyan transition-colors"><Github size={16} /></a>
-                                                <a href={products.gym.socials.twitter} target="_blank" rel="noopener noreferrer" className="hover:text-cyan transition-colors"><XIcon className="w-4 h-4" /></a>
-                                                <a href={products.gym.socials.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-cyan transition-colors"><Linkedin size={16} /></a>
-                                            </div>
-                                        </div>
+                                        <h3 className="text-xl sm:text-2xl font-bold text-white-off">{products.gym.name}</h3>
                                         <p className="text-sm font-medium text-emerald-400 bg-emerald-400/10 inline-block px-2 py-0.5 rounded w-fit mt-1">Launch: {products.gym.launchDate}</p>
                                     </div>
                                 </div>
-                                <ProgressRing progress={products.gym.progress} color={products.gym.accentColor} />
+                                <div className="flex justify-center sm:justify-end">
+                                    <ProgressRing progress={products.gym.progress} color={products.gym.accentColor} />
+                                </div>
                             </div>
 
                             <ul className="space-y-2 mb-auto ml-1">
@@ -162,10 +150,6 @@ export default function BentoGrid() {
                                 <li className="flex items-center gap-2 text-slate-light text-sm"><span className="text-emerald-400">📊</span> Progress charts & PRs</li>
                                 <li className="flex items-center gap-2 text-slate-light text-sm"><span className="text-emerald-400">📱</span> iOS + Android</li>
                             </ul>
-
-                            <MagneticButton href={products.gym.ctaLink} className="bg-emerald-600 text-white w-full justify-center mt-6 shadow-lg shadow-emerald-900/20 hover:bg-emerald-500">
-                                {products.gym.cta}
-                            </MagneticButton>
                         </div>
                     </Card3D>
                 </motion.div>
@@ -193,25 +177,23 @@ export default function BentoGrid() {
                 {/* 4. FreelancerShield (Wide) */}
                 <motion.div custom={3} variants={variants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="lg:col-span-5">
                     <Card3D className="h-full" accentColor={products.freelancer.accentColor}>
-                        <div className="h-full p-6 flex items-center gap-4 relative z-10">
-                            <ProgressRing progress={products.freelancer.progress} color={products.freelancer.accentColor} size={50} />
-                            <div>
-                                <h3 className="text-xl font-bold text-white-off flex items-center gap-2">
+                        <div className="h-full p-6 flex flex-col sm:flex-row sm:items-center gap-4 relative z-10">
+                            <div className="flex sm:block justify-center">
+                                <ProgressRing progress={products.freelancer.progress} color={products.freelancer.accentColor} size={50} />
+                            </div>
+                            <div className="text-center sm:text-left">
+                                <h3 className="text-xl font-bold text-white-off flex items-center justify-center sm:justify-start gap-2">
                                     {products.freelancer.name}
                                     <span className="text-lg">{products.freelancer.emoji}</span>
                                 </h3>
                                 <p className="text-xs md:text-sm text-amber-400 font-medium">{products.freelancer.tagline}</p>
                                 <p className="text-xs text-slate-light mt-1">🔒 Contracts • 💰 Payment protection • ⚖️ Disputes</p>
+                                <p className="text-xs font-bold text-amber-400 uppercase tracking-wider mt-2">Coming Soon</p>
                             </div>
-                            <div className="ml-auto flex flex-col items-end gap-2">
+                            <div className="hidden sm:flex ml-auto flex-col items-end gap-2">
                                 <div className="flex gap-2 text-slate-light">
-                                    <a href={products.freelancer.socials.github} target="_blank" rel="noopener noreferrer" className="hover:text-cyan transition-colors"><Github size={14} /></a>
-                                    <a href={products.freelancer.socials.twitter} target="_blank" rel="noopener noreferrer" className="hover:text-cyan transition-colors"><XIcon className="w-3.5 h-3.5" /></a>
-                                    <a href={products.freelancer.socials.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-cyan transition-colors"><Linkedin size={14} /></a>
+                                    {/* Social icons commented out */}
                                 </div>
-                                <a href="#" className="text-slate hover:text-amber-400 transition-colors">
-                                    <ArrowUpRight size={20} />
-                                </a>
                             </div>
                         </div>
                     </Card3D>

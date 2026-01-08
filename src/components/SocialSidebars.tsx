@@ -26,7 +26,7 @@ const IndieHackersIcon = ({ size = 20, className }: { size?: number, className?:
 export default function SocialSidebars() {
     return (
         <>
-            {/* Social Icons (Bottom Right) */}
+            {/* Desktop: Social Icons (Bottom Right) */}
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -56,7 +56,7 @@ export default function SocialSidebars() {
                 <div className="w-[1px] h-24 bg-slate-light/50"></div>
             </motion.div>
 
-            {/* Email (Top Right) */}
+            {/* Desktop: Email (Top Right) */}
             <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -73,6 +73,35 @@ export default function SocialSidebars() {
                 >
                     dvskr.333@gmail.com
                 </a>
+            </motion.div>
+
+            {/* Mobile: Horizontal Social Bar (Fixed Bottom) */}
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 2.2, duration: 0.5 }}
+                className="fixed bottom-0 left-0 right-0 z-[40] md:hidden bg-navy/90 backdrop-blur-sm border-t border-white/10 py-3 px-4"
+            >
+                <div className="flex justify-center items-center gap-6 text-slate-light">
+                    <a href="https://github.com/dvskr" target="_blank" rel="noopener noreferrer" className="hover:text-cyan transition-colors">
+                        <Github size={22} />
+                    </a>
+                    <a href="https://linkedin.com/in/dvskr" target="_blank" rel="noopener noreferrer" className="hover:text-cyan transition-colors">
+                        <Linkedin size={22} />
+                    </a>
+                    <a href="https://twitter.com/Sathish_Daggula" target="_blank" rel="noopener noreferrer" className="hover:text-cyan transition-colors">
+                        <XIcon size={20} />
+                    </a>
+                    <a href="https://www.producthunt.com/@sathish_1729" target="_blank" rel="noopener noreferrer" className="hover:text-cyan transition-colors">
+                        <ProductHuntIcon size={22} />
+                    </a>
+                    <a href="https://www.indiehackers.com/Sathish_Daggula" target="_blank" rel="noopener noreferrer" className="hover:text-cyan transition-colors">
+                        <IndieHackersIcon size={22} />
+                    </a>
+                    <a href="mailto:dvskr.333@gmail.com" className="hover:text-cyan transition-colors">
+                        <Mail size={22} />
+                    </a>
+                </div>
             </motion.div>
         </>
     );

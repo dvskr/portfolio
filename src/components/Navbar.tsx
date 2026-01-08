@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { useScrollDirection } from '@/hooks/useScrollDirection';
 import { useLenis } from 'lenis/react';
@@ -22,7 +22,12 @@ export default function Navbar() {
     const scrollDirection = useScrollDirection();
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [mounted, setMounted] = useState(false);
     const lenis = useLenis();
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -47,90 +52,111 @@ export default function Navbar() {
         }
     };
 
-    return (
-        <header
-            className={clsx(
-                'fixed top-0 w-full z-50 transition-all duration-300',
-                scrollDirection === 'down' ? '-translate-y-full' : 'translate-y-0',
-                isScrolled ? 'bg-navy/80 backdrop-blur-md shadow-lg' : 'bg-transparent'
-            )}
-        >
-            <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-                <Link href="/" className="text-cyan font-mono text-xl font-bold z-50">
+    // Mobile Menu Portal - renders directly to body, completely outside header
+    const MobileMenuPortal = () => {
+        if (!mounted || !isMobileMenuOpen) return null;
 
-                </Link>
+        return createPortal(
+            <div
+                className="fixed inset-0 z-[9999] flex flex-col justify-center items-center space-y-8 md:hidden"
+                style={{
+                    backgroundColor: '#112240',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    position: 'fixed',
+                }}
+            >
+                {/* Close button inside the portal */}
+                <button
+                    className="absolute top-4 right-6 text-cyan z-[10000]"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                >
+                    <X size={28} />
+                </button>
 
-                {/* Desktop Nav */}
-                <div className="hidden md:flex items-center space-x-8">
-                    {navLinks.map((link, index) => (
-                        <a
-                            key={link.name}
-                            href={link.href}
-                            onClick={(e) => handleNavClick(e, link.href)}
-                            className="group font-mono text-sm text-white-off hover:text-cyan transition-colors cursor-pointer"
-                        >
-                            <span className="text-cyan mr-1">0{index + 1}.</span>
-                            <span className="relative">
-                                {link.name}
-                                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-cyan transition-all group-hover:w-full"></span>
-                            </span>
-                        </a>
-                    ))}
-                    <ThemeToggle />
+                {navLinks.map((link, index) => (
                     <a
-                        href="/resume.pdf"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-4 py-2 border border-cyan text-cyan font-mono text-sm rounded hover:bg-cyan-tint transition-colors"
+                        key={link.name}
+                        href={link.href}
+                        onClick={(e) => handleNavClick(e, link.href)}
+                        className="font-mono text-xl text-white hover:text-cyan hover:tracking-widest transition-all cursor-pointer"
                     >
-                        Resume
+                        <span className="text-cyan mr-2">0{index + 1}.</span>
+                        {link.name}
                     </a>
-                </div>
+                ))}
+                <a
+                    href="/Resume_Sathish_DE.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-6 py-3 border border-cyan text-cyan font-mono text-lg rounded hover:bg-cyan-tint transition-colors"
+                >
+                    Resume
+                </a>
+            </div>,
+            document.body
+        );
+    };
 
-                {/* Mobile Toggle */}
-                <div className="md:hidden flex items-center gap-4 z-50">
-                    <ThemeToggle />
-                    <button
-                        className="text-cyan"
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    >
-                        {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-                    </button>
-                </div>
+    return (
+        <>
+            <header
+                className={clsx(
+                    'fixed top-0 w-full z-50 transition-all duration-300',
+                    !isMobileMenuOpen && scrollDirection === 'down' ? '-translate-y-full' : (isMobileMenuOpen ? '' : 'translate-y-0'),
+                    isScrolled ? 'bg-navy/80 backdrop-blur-md shadow-lg' : 'bg-transparent'
+                )}
+            >
+                <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
+                    <Link href="/" className="text-cyan font-mono text-xl font-bold z-50">
 
-                {/* Mobile Menu Overlay */}
-                <AnimatePresence>
-                    {isMobileMenuOpen && (
-                        <motion.div
-                            initial={{ opacity: 0, x: '100%' }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: '100%' }}
-                            transition={{ duration: 0.3, ease: 'easeInOut' }}
-                            className="fixed inset-0 bg-navy-light flex flex-col justify-center items-center space-y-8 md:hidden"
-                        >
-                            {navLinks.map((link, index) => (
-                                <a
-                                    key={link.name}
-                                    href={link.href}
-                                    onClick={(e) => handleNavClick(e, link.href)}
-                                    className="font-mono text-xl text-white-off hover:text-cyan hover:tracking-widest transition-all cursor-pointer"
-                                >
-                                    <span className="text-cyan mr-2">0{index + 1}.</span>
-                                    {link.name}
-                                </a>
-                            ))}
+                    </Link>
+
+                    {/* Desktop Nav */}
+                    <div className="hidden md:flex items-center space-x-8">
+                        {navLinks.map((link, index) => (
                             <a
-                                href="/resume.pdf"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="px-6 py-3 border border-cyan text-cyan font-mono text-lg rounded hover:bg-cyan-tint transition-colors"
+                                key={link.name}
+                                href={link.href}
+                                onClick={(e) => handleNavClick(e, link.href)}
+                                className="group font-mono text-sm text-white-off hover:text-cyan transition-colors cursor-pointer"
                             >
-                                Resume
+                                <span className="text-cyan mr-1">0{index + 1}.</span>
+                                <span className="relative">
+                                    {link.name}
+                                    <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-cyan transition-all group-hover:w-full"></span>
+                                </span>
                             </a>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </nav>
-        </header>
+                        ))}
+                        <ThemeToggle />
+                        <a
+                            href="/Resume_Sathish_DE.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-4 py-2 border border-cyan text-cyan font-mono text-sm rounded hover:bg-cyan-tint transition-colors"
+                        >
+                            Resume
+                        </a>
+                    </div>
+
+                    {/* Mobile Toggle */}
+                    <div className="md:hidden flex items-center gap-4 z-[101]">
+                        <ThemeToggle />
+                        <button
+                            className="text-cyan"
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        >
+                            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+                        </button>
+                    </div>
+
+                </nav>
+            </header>
+
+            {/* Mobile Menu rendered via Portal - completely outside header DOM */}
+            <MobileMenuPortal />
+        </>
     );
 }

@@ -72,11 +72,11 @@ export default function Hero() {
                         frontend experiences.
                     </p>
 
-                    <div className="hero-text flex flex-wrap gap-6">
+                    <div className="hero-text flex flex-col sm:flex-row gap-4">
                         <Magnetic>
                             <a
                                 href="#products"
-                                className="px-8 py-4 border border-cyan text-cyan rounded hover:bg-cyan-tint transition-all font-mono text-sm data-[cursor=pointer]"
+                                className="inline-block px-8 py-4 border border-cyan text-cyan rounded hover:bg-cyan-tint transition-all font-mono text-sm text-center data-[cursor=pointer]"
                                 data-cursor="pointer"
                             >
                                 Check my products
@@ -86,7 +86,7 @@ export default function Hero() {
                         <Magnetic>
                             <a
                                 href="#contact"
-                                className="px-8 py-4 border border-slate text-white-off rounded hover:bg-navy-light transition-all font-mono text-sm data-[cursor=pointer]"
+                                className="inline-block px-8 py-4 border border-slate text-white-off rounded hover:bg-navy-light transition-all font-mono text-sm text-center data-[cursor=pointer]"
                                 data-cursor="pointer"
                             >
                                 Get In Touch
@@ -102,7 +102,7 @@ export default function Hero() {
 
             </div>
 
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 scroll-indicator">
+            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 scroll-indicator hidden md:block">
                 <a href="#about" aria-label="Scroll Down">
                     <ArrowDown className="text-cyan w-8 h-8 opacity-70 hover:opacity-100 transition-opacity" />
                 </a>

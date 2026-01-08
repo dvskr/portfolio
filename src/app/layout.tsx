@@ -40,6 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
+        suppressHydrationWarning
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-navy text-white-off selection:bg-cyan-tint selection:text-cyan`}
       >
         <PageLoader>

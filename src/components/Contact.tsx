@@ -37,15 +37,27 @@ export default function Contact() {
                     Whether you have a question or just want to say hi, I&apos;ll try my best to get back to you!
                 </p>
 
-                <Magnetic>
-                    <a
-                        href="mailto:hello@sathish.com"
-                        className="inline-block px-10 py-5 border border-cyan text-cyan rounded hover:bg-cyan-tint transition-all font-mono text-sm data-[cursor=pointer]"
-                        data-cursor="pointer"
-                    >
-                        Say Hello
-                    </a>
-                </Magnetic>
+                <div className="flex flex-col md:flex-row gap-6 justify-center">
+                    <Magnetic>
+                        <a
+                            href="mailto:dvsk.333@gmail.com"
+                            className="inline-block px-10 py-5 border border-cyan text-cyan rounded hover:bg-cyan-tint transition-all font-mono text-sm data-[cursor=pointer]"
+                            data-cursor="pointer"
+                        >
+                            Say Hello
+                        </a>
+                    </Magnetic>
+
+                    <Magnetic>
+                        <a
+                            href="mailto:sathish@pmhnphiring.com"
+                            className="inline-block px-10 py-5 border border-cyan text-cyan rounded hover:bg-cyan-tint transition-all font-mono text-sm data-[cursor=pointer]"
+                            data-cursor="pointer"
+                        >
+                            SaaS Inquiries
+                        </a>
+                    </Magnetic>
+                </div>
 
 
 
