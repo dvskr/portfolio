@@ -62,7 +62,7 @@ export default function Experience() {
         <section
             ref={sectionRef}
             id="experience"
-            className="max-w-[1000px] mx-auto px-6 py-24 md:py-32"
+            className="max-w-[1000px] mx-auto px-6 py-16 md:py-20"
         >
             <div className="flex items-center gap-4 mb-12">
                 <h2 className="text-2xl md:text-3xl font-bold font-mono text-white-off">

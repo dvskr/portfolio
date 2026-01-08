@@ -1,10 +1,7 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
+import { CardBody, CardContainer, CardItem } from './ThreeDCard';
 
 const products = [
     {
@@ -40,100 +37,70 @@ const products = [
 ];
 
 export default function Products() {
-    const [activeIndex, setActiveIndex] = useState(0);
-
     return (
-        <section id="products" className="py-24 px-6 md:px-12 relative bg-navy">
+        <section id="products" className="py-20 px-6 relative bg-navy">
             <div className="max-w-[1200px] mx-auto">
                 {/* Section Header */}
-                <div className="flex items-center gap-4 mb-24">
+                <div className="flex items-center gap-4 mb-20">
                     <h2 className="text-2xl md:text-3xl font-bold font-mono text-white-off">
                         <span className="text-cyan mr-2">05.</span> What I&apos;m Building
                     </h2>
                     <div className="h-[1px] bg-navy-lighter flex-grow max-w-[300px]"></div>
                 </div>
 
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-24">
-                    {/* Left Column: Scrollable Content */}
-                    <div className="flex flex-col gap-32 lg:gap-[40vh] pb-32">
-                        {products.map((product, index) => (
-                            <ProductCard
-                                key={index}
-                                product={product}
-                                index={index}
-                                setActiveIndex={setActiveIndex}
-                            />
-                        ))}
-                    </div>
-
-                    {/* Right Column: Sticky Visuals (Desktop Only) */}
-                    <div className="hidden lg:block relative">
-                        <div className="sticky top-0 h-screen flex items-center justify-center">
-                            <div className="relative w-full aspect-square max-w-[500px] rounded-2xl overflow-hidden border border-navy-lighter shadow-2xl bg-navy-light/50 backdrop-blur-sm">
-                                <AnimatePresence mode='wait'>
-                                    <motion.div
-                                        key={activeIndex}
-                                        initial={{ opacity: 0, scale: 0.95 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        exit={{ opacity: 0, scale: 1.05 }}
-                                        transition={{ duration: 0.4, ease: "easeInOut" }}
-                                        className={`absolute inset-0 bg-gradient-to-br ${products[activeIndex].gradient} flex items-center justify-center p-12`}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {products.map((product, index) => (
+                        <div key={index} className="h-full">
+                            <CardContainer className="inter-var w-full h-full">
+                                <CardBody className="bg-navy-light relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-auto rounded-xl p-6 border border-navy-lighter">
+                                    <CardItem
+                                        translateZ="50"
+                                        className="text-xl font-bold text-slate-light dark:text-white"
                                     >
-                                        <div className="text-center">
-                                            <h3 className="text-4xl font-bold text-white-off mb-4">{products[activeIndex].name}</h3>
-                                            <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-navy-dark/50 border border-white/10 ${products[activeIndex].textColor}`}>
-                                                <span className={`w-2 h-2 rounded-full ${products[activeIndex].statusColor}`}></span>
-                                                <span className="text-sm font-mono">{products[activeIndex].status}</span>
+                                        {product.name}
+                                    </CardItem>
+                                    <CardItem
+                                        as="p"
+                                        translateZ="60"
+                                        className="text-slate text-sm max-w-sm mt-2 dark:text-neutral-300 font-mono"
+                                    >
+                                        {product.description}
+                                    </CardItem>
+                                    <CardItem translateZ="100" className="w-full mt-4">
+                                        <div
+                                            className={`w-full aspect-video rounded-xl bg-gradient-to-br ${product.gradient} flex items-center justify-center group-hover/card:shadow-xl transition-shadow`}
+                                        >
+                                            {/* Placeholder visual */}
+                                            <div className="text-white-off/20 font-mono text-4xl font-bold">
+                                                {product.name.charAt(0)}
                                             </div>
                                         </div>
-                                    </motion.div>
-                                </AnimatePresence>
-                            </div>
+                                    </CardItem>
+                                    <div className="flex justify-between items-center mt-8">
+                                        <CardItem
+                                            translateZ={20}
+                                            as={Link}
+                                            href={product.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white text-cyan font-mono hover:bg-navy-lighter/30 transition-colors"
+                                        >
+                                            View Project →
+                                        </CardItem>
+
+                                        <CardItem
+                                            translateZ={40}
+                                            className={`px-4 py-2 rounded-xl text-xs font-mono font-bold ${product.textColor} bg-navy-dark border border-white/5`}
+                                        >
+                                            {product.status}
+                                        </CardItem>
+                                    </div>
+                                </CardBody>
+                            </CardContainer>
                         </div>
-                    </div>
+                    ))}
                 </div>
             </div>
         </section>
-    );
-}
-
-function ProductCard({ product, index, setActiveIndex }: { product: typeof products[0], index: number, setActiveIndex: (i: number) => void }) {
-    return (
-        <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ amount: 0.5, margin: "-10% 0px -10% 0px" }}
-            onViewportEnter={() => setActiveIndex(index)}
-            className="flex flex-col justify-center min-h-[50vh] lg:min-h-[60vh]"
-        >
-            <Link
-                href={product.link}
-                className="group block"
-            >
-                <div className="lg:hidden w-full aspect-video mb-8 rounded-xl bg-gradient-to-br from-navy-light to-navy border border-navy-lighter flex items-center justify-center overflow-hidden">
-                    <div className={`w-full h-full bg-gradient-to-br ${product.gradient} opacity-80`} />
-                </div>
-
-                <h3 className="text-4xl md:text-6xl font-bold text-slate-light group-hover:text-cyan transition-colors mb-4">
-                    {product.name}
-                </h3>
-
-                <p className="text-lg md:text-xl text-slate font-mono mb-8 max-w-md">
-                    {product.description}
-                </p>
-
-                <div className="flex items-center gap-4">
-                    <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full bg-navy-light border border-navy-lighter`}>
-                        <span className={`w-2 h-2 rounded-full ${product.statusColor}`}></span>
-                        <span className="font-mono text-xs text-slate-light uppercase tracking-wider">{product.status}</span>
-                    </div>
-
-                    <span className="flex items-center gap-2 text-cyan font-mono text-sm group-hover:translate-x-1 transition-transform">
-                        View Project
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                    </span>
-                </div>
-            </Link>
-        </motion.div>
     );
 }

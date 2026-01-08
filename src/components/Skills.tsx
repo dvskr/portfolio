@@ -34,7 +34,7 @@ export default function Skills() {
     }, []);
 
     return (
-        <section ref={sectionRef} id="skills" className="py-24 md:py-32 bg-navy-light/30 overflow-hidden">
+        <section ref={sectionRef} id="skills" className="py-16 md:py-20 bg-navy-light/30 overflow-hidden">
             <div className="max-w-[1000px] mx-auto px-6 mb-16">
                 <h2 className="text-2xl md:text-3xl font-bold font-mono text-white-off">
                     <span className="text-cyan mr-2">03.</span> Technical Skills

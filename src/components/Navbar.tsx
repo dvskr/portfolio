@@ -121,6 +121,8 @@ export default function Navbar() {
                             ))}
                             <a
                                 href="/resume.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="px-6 py-3 border border-cyan text-cyan font-mono text-lg rounded hover:bg-cyan-tint transition-colors"
                             >
                                 Resume

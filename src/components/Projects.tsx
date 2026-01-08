@@ -72,7 +72,7 @@ export default function Projects() {
     }, []);
 
     return (
-        <section ref={sectionRef} id="projects" className="py-24 md:py-32 px-6">
+        <section ref={sectionRef} id="projects" className="py-16 md:py-20 px-6">
             <div className="max-w-[1200px] mx-auto">
 
                 {/* Section Header */}
@@ -100,7 +100,7 @@ export default function Projects() {
                             )}>
                                 <p className="font-mono text-cyan text-sm mb-2">Featured Project</p>
                                 <h3 className="text-white-off font-bold text-2xl md:text-3xl mb-6 hover:text-cyan transition-colors cursor-pointer">
-                                    <Link href={project.link}>{project.title}</Link>
+                                    <Link href={project.link} target="_blank" rel="noopener noreferrer">{project.title}</Link>
                                 </h3>
 
                                 {/* Description Card */}
@@ -124,8 +124,8 @@ export default function Projects() {
                                     "flex items-center gap-6 text-white-off",
                                     index % 2 === 0 ? "justify-end" : "justify-start"
                                 )}>
-                                    <a href={project.github} className="hover:text-cyan transition-colors"><Github size={22} /></a>
-                                    <a href={project.link} className="hover:text-cyan transition-colors"><ExternalLink size={22} /></a>
+                                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="hover:text-cyan transition-colors"><Github size={22} /></a>
+                                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="hover:text-cyan transition-colors"><ExternalLink size={22} /></a>
                                 </div>
 
                             </div>

@@ -28,7 +28,7 @@ export default function Contact() {
     }, []);
 
     return (
-        <section ref={sectionRef} id="contact" className="py-24 md:py-48 px-6 text-center">
+        <section ref={sectionRef} id="contact" className="py-20 md:py-32 px-6 text-center">
             <div className="max-w-[600px] mx-auto">
                 <p className="text-cyan font-mono mb-6">06. What&apos;s Next?</p>
                 <h2 className="text-4xl md:text-6xl font-bold text-white-off mb-8">Get In Touch</h2>
