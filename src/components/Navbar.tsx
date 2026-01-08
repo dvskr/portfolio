@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 import { useScrollDirection } from '@/hooks/useScrollDirection';
 import { useLenis } from 'lenis/react';

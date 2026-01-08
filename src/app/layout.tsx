@@ -22,6 +22,11 @@ export const metadata: Metadata = {
   description: "Portfolio of Sathish Kumar - Data Engineer by Day, Product Builder by Night. Building scalable data pipelines and AI-powered SaaS products.",
   keywords: ["Data Engineer", "Product Builder", "Portfolio", "Next.js", "React", "Python", "AWS", "Azure", "Data Engineering"],
   authors: [{ name: "Sathish Kumar" }],
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
   openGraph: {
     title: "Sathish Kumar | Data Engineer & Product Builder",
     description: "Data Engineer by Day, Product Builder by Night.",
