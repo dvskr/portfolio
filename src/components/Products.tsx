@@ -12,155 +12,128 @@ const products = [
         description: 'Job board for Psychiatric NPs',
         status: 'Live',
         statusColor: 'bg-green-500',
+        textColor: 'text-green-400',
         link: 'https://pmhnphiring.com',
-        image: '#112240', // Placeholder color
+        color: '#112240',
+        gradient: 'from-[#0f172a] to-[#112240]',
     },
     {
         name: 'Gym Tracker',
         description: 'AI-powered workout application',
         status: 'Soon',
         statusColor: 'bg-yellow-500',
+        textColor: 'text-yellow-400',
         link: '#',
-        image: '#1d3557', // Placeholder color
+        color: '#1d3557',
+        gradient: 'from-[#1e1b4b] to-[#1d3557]',
     },
     {
         name: 'FreelancerShield',
         description: 'Business management for freelancers',
         status: 'Building',
         statusColor: 'bg-blue-500',
+        textColor: 'text-blue-400',
         link: '#',
-        image: '#0a192f', // Placeholder color
+        color: '#0a192f',
+        gradient: 'from-[#020617] to-[#0a192f]',
     },
 ];
 
 export default function Products() {
-    const [modal, setModal] = useState({ active: false, index: 0 });
-    const sectionRef = useRef<HTMLElement>(null);
-    const cursorRef = useRef<HTMLDivElement>(null);
-    const cursorLabelRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
-
-        gsap.fromTo(
-            sectionRef.current,
-            { y: 50, opacity: 0 },
-            {
-                y: 0,
-                opacity: 1,
-                duration: 0.8,
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: 'top 70%',
-                },
-            }
-        );
-    }, []);
-
-    useEffect(() => {
-        // Move custom cursor functionality specific to this component
-        const moveCursor = (e: MouseEvent) => {
-            if (!cursorRef.current || !cursorLabelRef.current) return;
-
-            const { clientX, clientY } = e;
-
-            gsap.to(cursorRef.current, {
-                x: clientX,
-                y: clientY,
-                duration: 0.1, // Faster follow for the image preview
-                ease: "power2.out"
-            });
-
-            gsap.to(cursorLabelRef.current, {
-                x: clientX,
-                y: clientY,
-                duration: 0.15,
-                ease: "power2.out"
-            });
-        };
-
-        if (modal.active) {
-            window.addEventListener('mousemove', moveCursor);
-        } else {
-            window.removeEventListener('mousemove', moveCursor);
-        }
-
-        return () => window.removeEventListener('mousemove', moveCursor);
-    }, [modal.active]);
+    const [activeIndex, setActiveIndex] = useState(0);
 
     return (
-        <section ref={sectionRef} id="products" className="py-24 md:py-32 px-6">
-            <div className="max-w-[1000px] mx-auto">
-                <div className="flex items-center gap-4 mb-12">
+        <section id="products" className="py-24 px-6 md:px-12 relative bg-navy">
+            <div className="max-w-[1200px] mx-auto">
+                {/* Section Header */}
+                <div className="flex items-center gap-4 mb-24">
                     <h2 className="text-2xl md:text-3xl font-bold font-mono text-white-off">
                         <span className="text-cyan mr-2">05.</span> What I&apos;m Building
                     </h2>
                     <div className="h-[1px] bg-navy-lighter flex-grow max-w-[300px]"></div>
                 </div>
 
-                <div className="flex flex-col">
-                    {products.map((product, index) => (
-                        <Link
-                            key={index}
-                            href={product.link}
-                            className="group relative flex items-center justify-between py-10 border-b border-navy-lighter transition-all hover:px-4"
-                            onMouseEnter={() => setModal({ active: true, index })}
-                            onMouseLeave={() => setModal({ active: false, index })}
-                        >
-                            <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-6 transition-transform group-hover:-translate-x-2">
-                                <h3 className="text-3xl md:text-5xl font-bold text-slate-light group-hover:text-white-off transition-colors">
-                                    {product.name}
-                                </h3>
-                                <span className="font-mono text-slate text-sm">
-                                    {product.description}
-                                </span>
-                            </div>
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-24">
+                    {/* Left Column: Scrollable Content */}
+                    <div className="flex flex-col gap-32 lg:gap-[40vh] pb-32">
+                        {products.map((product, index) => (
+                            <ProductCard
+                                key={index}
+                                product={product}
+                                index={index}
+                                setActiveIndex={setActiveIndex}
+                            />
+                        ))}
+                    </div>
 
-                            <div className="flex items-center gap-2 transition-transform group-hover:translate-x-2">
-                                <span className={`w-2 h-2 rounded-full ${product.statusColor}`}></span>
-                                <span className="font-mono text-xs text-slate-light">
-                                    {product.status}
-                                </span>
+                    {/* Right Column: Sticky Visuals (Desktop Only) */}
+                    <div className="hidden lg:block relative">
+                        <div className="sticky top-0 h-screen flex items-center justify-center">
+                            <div className="relative w-full aspect-square max-w-[500px] rounded-2xl overflow-hidden border border-navy-lighter shadow-2xl bg-navy-light/50 backdrop-blur-sm">
+                                <AnimatePresence mode='wait'>
+                                    <motion.div
+                                        key={activeIndex}
+                                        initial={{ opacity: 0, scale: 0.95 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        exit={{ opacity: 0, scale: 1.05 }}
+                                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                                        className={`absolute inset-0 bg-gradient-to-br ${products[activeIndex].gradient} flex items-center justify-center p-12`}
+                                    >
+                                        <div className="text-center">
+                                            <h3 className="text-4xl font-bold text-white-off mb-4">{products[activeIndex].name}</h3>
+                                            <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-navy-dark/50 border border-white/10 ${products[activeIndex].textColor}`}>
+                                                <span className={`w-2 h-2 rounded-full ${products[activeIndex].statusColor}`}></span>
+                                                <span className="text-sm font-mono">{products[activeIndex].status}</span>
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                </AnimatePresence>
                             </div>
-                        </Link>
-                    ))}
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            {/* Floating Image Preview - Following Cursor */}
-            <AnimatePresence>
-                {modal.active && (
-                    <>
-                        {/* The Preview Card */}
-                        <motion.div
-                            ref={cursorRef}
-                            className="fixed top-0 left-0 w-[300px] h-[200px] bg-navy-light border border-slate-light rounded-lg overflow-hidden pointer-events-none z-50 hidden md:flex items-center justify-center translate-x-[-50%] translate-y-[-50%]"
-                            initial={{ opacity: 0, scale: 0 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0 }}
-                            transition={{ duration: 0.3, ease: 'backOut' }}
-                        >
-                            <div
-                                className="w-full h-full flex items-center justify-center text-slate-light font-mono"
-                                style={{ backgroundColor: products[modal.index].image }}
-                            >
-                                [Preview Image]
-                            </div>
-                        </motion.div>
-
-                        {/* "View" Label */}
-                        <motion.div
-                            ref={cursorLabelRef}
-                            className="fixed top-0 left-0 w-20 h-20 bg-cyan text-navy font-bold rounded-full flex items-center justify-center pointer-events-none z-50 hidden md:flex translate-x-[-50%] translate-y-[-50%]"
-                            initial={{ opacity: 0, scale: 0 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0 }}
-                        >
-                            View
-                        </motion.div>
-                    </>
-                )}
-            </AnimatePresence>
         </section>
+    );
+}
+
+function ProductCard({ product, index, setActiveIndex }: { product: typeof products[0], index: number, setActiveIndex: (i: number) => void }) {
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ amount: 0.5, margin: "-10% 0px -10% 0px" }}
+            onViewportEnter={() => setActiveIndex(index)}
+            className="flex flex-col justify-center min-h-[50vh] lg:min-h-[60vh]"
+        >
+            <Link
+                href={product.link}
+                className="group block"
+            >
+                <div className="lg:hidden w-full aspect-video mb-8 rounded-xl bg-gradient-to-br from-navy-light to-navy border border-navy-lighter flex items-center justify-center overflow-hidden">
+                    <div className={`w-full h-full bg-gradient-to-br ${product.gradient} opacity-80`} />
+                </div>
+
+                <h3 className="text-4xl md:text-6xl font-bold text-slate-light group-hover:text-cyan transition-colors mb-4">
+                    {product.name}
+                </h3>
+
+                <p className="text-lg md:text-xl text-slate font-mono mb-8 max-w-md">
+                    {product.description}
+                </p>
+
+                <div className="flex items-center gap-4">
+                    <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full bg-navy-light border border-navy-lighter`}>
+                        <span className={`w-2 h-2 rounded-full ${product.statusColor}`}></span>
+                        <span className="font-mono text-xs text-slate-light uppercase tracking-wider">{product.status}</span>
+                    </div>
+
+                    <span className="flex items-center gap-2 text-cyan font-mono text-sm group-hover:translate-x-1 transition-transform">
+                        View Project
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </span>
+                </div>
+            </Link>
+        </motion.div>
     );
 }
