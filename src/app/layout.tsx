@@ -4,7 +4,6 @@ import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 
 import Navbar from "@/components/Navbar";
-import PageLoader from "@/components/PageLoader";
 import SocialSidebars from "@/components/SocialSidebars";
 
 const inter = Inter({
@@ -116,14 +115,11 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-navy text-white-off selection:bg-cyan-tint selection:text-cyan`}
       >
-        <PageLoader>
-          <SmoothScroll>
-
-            <Navbar />
-            <SocialSidebars />
-            <main>{children}</main>
-          </SmoothScroll>
-        </PageLoader>
+        <SmoothScroll>
+          <Navbar />
+          <SocialSidebars />
+          <main>{children}</main>
+        </SmoothScroll>
       </body>
     </html>
   );

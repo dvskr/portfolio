@@ -56,25 +56,6 @@ export default function SocialSidebars() {
                 <div className="w-[1px] h-24 bg-slate-light/50"></div>
             </motion.div>
 
-            {/* Desktop: Email (Top Right) */}
-            <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 2.2, duration: 0.5 }}
-                className="fixed top-0 right-6 md:right-10 z-[60] hidden md:flex flex-col items-center gap-6 text-slate-light"
-            >
-                {/* Line from top */}
-                <div className="w-[1px] h-24 bg-slate-light/50"></div>
-
-                <a
-                    href="mailto:dvskr.333@gmail.com"
-                    className="font-mono text-sm tracking-widest hover:text-cyan hover:translate-y-1 transition-all duration-300 vertical-text"
-                    style={{ writingMode: 'vertical-rl' }}
-                >
-                    dvskr.333@gmail.com
-                </a>
-            </motion.div>
-
             {/* Mobile: Horizontal Social Bar (Fixed Bottom) */}
             <motion.div
                 initial={{ opacity: 0, y: 20 }}

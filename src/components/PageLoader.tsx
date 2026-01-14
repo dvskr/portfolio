@@ -114,7 +114,7 @@ export default function PageLoader({ children }: { children: React.ReactNode }) 
                     </motion.div>
                 )}
             </AnimatePresence>
-            {!loading && children}
+            {children}
         </>
     );
 }
