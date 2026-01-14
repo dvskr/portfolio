@@ -18,6 +18,11 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://dvskr.dev'),
+  icons: {
+    icon: '/favicon.png?v=2',
+    shortcut: '/favicon.png?v=2',
+    apple: '/favicon.png?v=2',
+  },
   title: "Sathish Kumar | Data Engineer & Product Builder",
   description: "Portfolio of Sathish Kumar - Data Engineer by Day, Product Builder by Night. Building scalable data pipelines and AI-powered SaaS products.",
   keywords: ["Data Engineer", "Product Builder", "Portfolio", "Next.js", "React", "Python", "AWS", "Azure", "Data Engineering", "SaaS", "AI", "PySpark", "Snowflake"],
